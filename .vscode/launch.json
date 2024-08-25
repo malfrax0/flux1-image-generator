@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+    "configurations": [
+      {
+        "name": "API – Server",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npx",
+        "runtimeArgs": [
+          "nx",
+          "run",
+          "api:serve"
+        ],
+        "outputCapture": "std",
+        "internalConsoleOptions": "openOnSessionStart",
+        "console": "internalConsole",
+        "env": {
+          "TS_NODE_IGNORE": "false",
+          "TS_NODE_PROJECT": "${workspaceFolder}/apps/api/tsconfig.json"
+        }
+      },
+      {
+        "name": "Web – Server",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npx",
+        "runtimeArgs": [
+          "nx",
+          "run",
+          "web:serve"
+        ],
+        "outputCapture": "std",
+        "internalConsoleOptions": "openOnSessionStart",
+        "console": "internalConsole",
+        "env": {
+          "TS_NODE_IGNORE": "false",
+          "TS_NODE_PROJECT": "${workspaceFolder}/apps/web/tsconfig.json"
+        }
+      }
+    ]
+  }
+  

@@ -1,0 +1,37 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    ports:
+      - 5433:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: app
+    volumes:
+      - ../apps/postgres:/var/lib/postgresql/data
+  api:
+    container_name: api
+    image: api
+    depends_on:
+      - postgres
+    ports:
+      - 8001:3000
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/app?schema=public
+      - API_PORT=3000
+  web:
+    container_name: web
+    image: web
+    depends_on:
+      - postgres
+      - api
+    ports:
+      - 3042:80
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
