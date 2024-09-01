@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Routes from './Router';
 import { ThemeProvider } from '@emotion/react';
-import { CssBaseline, createTheme } from '@mui/material';
+import { Box, CssBaseline, createTheme } from '@mui/material';
 import BottomBar from './components/BottomBar';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
@@ -24,6 +24,7 @@ export function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <RouterProvider router={router} />
+        <Box sx={{height: 64}}></Box>
         <BottomBar />
       </ThemeProvider>
     </ApolloProvider>

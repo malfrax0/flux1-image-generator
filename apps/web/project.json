@@ -6,7 +6,7 @@
   "targets": {
     "docker-build": {
       "dependsOn": ["build"],
-      "command": "docker build -f apps/web/Dockerfile . -t web"
+      "command": "docker build -f apps/web/Dockerfile . -t web-image-generator"
     }
   },
   "tags": []

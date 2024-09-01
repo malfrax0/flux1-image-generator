@@ -18,3 +18,21 @@ model Metadata {
   key String @unique
   value String
 }
+
+enum State {
+  QUEUED
+  ON_GOING
+  FINISHED
+}
+
+model Generation {
+  id  Int @id @default(autoincrement())
+  image String?
+  prompt String
+  width Int
+  height Int
+  state State
+  progress Float
+  estimatedEnd DateTime?
+  date DateTime @default(now())
+}

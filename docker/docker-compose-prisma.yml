@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    ports:
+      - 5433:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: app-image-generator
+    volumes:
+      - ../apps/postgres:/var/lib/postgresql/data
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450

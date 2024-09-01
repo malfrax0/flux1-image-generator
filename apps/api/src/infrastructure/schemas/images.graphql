@@ -1,0 +1,32 @@
+scalar DateTime
+
+enum State {
+    QUEUED
+    ON_GOING
+    FINISHED
+}
+
+type Generation {
+    id: ID!
+    image: String
+    prompt: String!
+    width: Int!
+    height: Int!
+    state: State!
+    progress: Float!
+    estimatedEnd: DateTime
+    date: DateTime!
+}
+
+type Query {
+    generations: [Generation!]
+}
+
+type Mutation {
+    generate(prompt: String!, width: Int!, height: Int!): ID!
+    deleteGeneration(id: ID!): Boolean!
+}
+
+type Subscription {
+    generationProgress: Generation!
+}

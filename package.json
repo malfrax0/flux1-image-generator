@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "p:generate": "prisma generate",
+    "p:migrate:dev": "prisma migrate dev && prisma db push",
+    "db:update": "npm run p:generate && npm run p:migrate:dev && npm run codegen"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +31,7 @@
     "graphql-yoga": "^5.2.0",
     "lodash": "^4.17.21",
     "prisma": "^5.11.0",
+    "python-shell": "^5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dotenv": "^0.1.3",
